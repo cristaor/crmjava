@@ -1,0 +1,15 @@
+  <Record table="k_user_avatars" pojo="UserAccountAvatar">
+    <Column name="gu_avatar" type="CHAR" maxlength="32" nullable="false" constraint="primary key" indexed="true" default="GUID"></Column>
+    <Column name="nm_avatar" type="VARCHAR" maxlength="50" nullable="false" indexed="true"></Column>
+    <Column name="gu_account" type="CHAR" maxlength="32" nullable="false" indexed="true" foreignkey="k_user_accounts"></Column>
+    <Column name="dt_created" type="TIMESTAMP" nullable="false" default="now"></Column>
+    <Column name="ls_interests" type="INT[]" nullable="true"></Column>
+  </Record>
+  <Record table="k_user_avatar_skills" pojo="UserAccountAvatar">
+    <Column name="gu_avatar" type="CHAR" maxlength="32" nullable="false" constraint="primary key" indexed="true" default="GUID"></Column>
+    <Column name="gu_avatar" type="CHAR" maxlength="32" nullable="true" indexed="true"></Column>
+    <Column name="gu_skill" type="CHAR" maxlength="32" nullable="false" indexed="false"></Column>
+    <Column name="nm_skill" type="VARCHAR" maxlength="100" nullable="false" indexed="false"></Column>
+    ...
+  </Record>
+  

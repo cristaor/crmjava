@@ -1,0 +1,7 @@
+CREATE VIEW v_active_courses AS
+SELECT a.gu_acourse,c.gu_course,c.gu_workarea,a.tx_start,a.tx_end,a.nm_course AS nm_acourse,a.id_course AS id_acourse,a.dt_created,a.dt_modified,a.dt_closed,a.nu_max_alumni,a.nm_tutor,a.tx_tutor_email,a.de_course AS de_acourse,c.nm_course,c.id_course,c.gu_msite_eval,c.gu_msite_abst,c.tx_dept,c.tx_area,c.nu_credits,c.de_course
+FROM k_academic_courses a, k_courses c WHERE a.gu_course=c.gu_course AND a.bo_active<>0 AND c.bo_active<>0;
+
+CREATE VIEW v_contact_education_degree AS SELECT d.gu_workarea,e.gu_contact,e.gu_degree,e.ix_degree,e.tp_degree,e.id_degree,d.nm_degree,e.lv_degree,e.dt_created,e.bo_completed,e.gu_institution,e.nm_center,e.tx_dt_from,e.tx_dt_to FROM k_contact_education e, k_education_degree d WHERE e.gu_degree=d.gu_degree;
+
+CREATE VIEW v_academic_courses_addresses AS SELECT c.gu_acourse,c.gu_course,c.tx_start,c.tx_end,c.nm_course,c.id_course,c.bo_active,c.dt_created,c.dt_modified,c.dt_closed,c.pr_acourse,c.nu_max_alumni,c.gu_address,c.nm_tutor,c.tx_tutor_email,c.de_course,c.pr_booking,c.pr_payment,c.nu_payments,a.ix_address,a.gu_workarea,a.gu_user,a.tp_location,a.nm_company,a.tp_street,a.nm_street,a.nu_street,a.tx_addr1,a.tx_addr2,a.id_country,a.nm_country,a.id_state,a.nm_state,a.mn_city,a.zipcode,a.work_phone,a.direct_phone,a.home_phone,a.mov_phone,a.fax_phone,a.other_phone,a.po_box,a.tx_email,a.tx_email_alt,a.url_addr,a.coord_x,a.coord_y,a.contact_person,a.tx_salutation,a.id_ref,a.tx_remarks FROM k_academic_courses c, k_addresses a WHERE c.gu_address=a.gu_address;
