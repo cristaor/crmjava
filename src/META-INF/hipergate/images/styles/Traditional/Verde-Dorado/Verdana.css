@@ -1,0 +1,59 @@
+.TP_body_div {
+  text-align:center;
+}
+.TP_fondo1 {
+  font-size:1px;
+  background-color:#848400;
+}
+.TP_fondo2 {
+  font-size:1px;
+  background-color:#C0C000;
+}
+.TP_TITULAR_TEXTO {
+  color:#FFFFFF;
+  background-color:#848400;
+  font-family:Verdana,Arial,Helvetica,sans-serif;
+  font-size:14pt;
+  font-weight:bolder;
+  text-align:center;
+}
+.TP_BIENVENIDA_INTRO {
+  color:#008000;
+  font-family:Verdana,Arial,Helvetica,sans-serif;
+  font-size:10pt;
+  font-weight:bolder;
+}
+.TP_BIENVENIDA_TEXTO {
+  color:#008000;
+  font-family:Verdana,Arial,Helvetica,sans-serif;
+  font-size:10pt;
+}
+.TP_TITULAR_ARTICULO {
+  color:#008000;
+  font-family:Verdana,Arial,Helvetica,sans-serif;
+  font-size:10pt;
+  font-weight:bolder;
+}
+.TP_PARRAFO_ARTICULO {
+  color:#008000;
+  padding-top:8px;
+  font-family:Verdana,Arial,Helvetica,sans-serif;
+  font-size:9pt;
+}
+.TP_ENLACE_ARTICULO_div {
+  text-align:right;
+}
+.TP_ENLACE_ARTICULO {
+  color:#008000;
+  padding-top:5px;
+  font-family:Verdana,Arial,Helvetica,sans-serif;
+  font-size:7.5pt;
+}
+.TP_PIE_TEXTO {
+  color:#008000;
+  font-family:Verdana,Arial,Helvetica,sans-serif;
+  font-size:9pt;
+}
+.TP_FOTO_PIE {
+  text-align:right;
+}

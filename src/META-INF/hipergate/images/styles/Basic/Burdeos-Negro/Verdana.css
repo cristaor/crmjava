@@ -1,0 +1,277 @@
+/* Fuentes */
+.TP_TITULAR_TEXTO,.TP_TITULAR_COMENTARIO,.TP_TITULAR_FECHA,.TP_BIENVENIDA_TEXTO,.TP_este_numero,.TP_sumario_td,.TP_TITULO_ARTICULO,.TP_ARTICULO_cell,.TP_ENLACE_ARTICULO,.TP_TITULO_LATERAL_SUPERIOR,.TP_LATERAL_SUPERIOR_cont,.TP_TITULO_LATERAL_CENTRAL,.TP_LATERAL_CENTRAL_cont,.TP_TITULO_LATERAL_INFERIOR,.TP_LATERAL_INFERIOR_cont,.TP_PIE_WEB_div,.TP_PIE_EMAIL_div,.TP_PIE_CONTACTO_div,.TP_PIE_TEXTO_div,.TP_PIE_TEXTO {
+  font-family:Verdana,Arial,Helvetica,sans-serif;
+}
+/* Tamaño de fuentes */
+  .TP_TITULAR_COMENTARIO,.TP_TITULAR_FECHA,.TP_PIE_TEXTO {
+    font-size:7.5pt;
+  }
+  .TP_BIENVENIDA_TEXTO,.TP_ENLACE_ARTICULO,.TP_LATERAL_SUPERIOR_cont,.TP_LATERAL_CENTRAL_cont,.TP_LATERAL_INFERIOR_cont {
+    font-size:8pt;
+  }
+  .TP_sumario_td,.TP_ARTICULO_cell,.TP_TITULO_LATERAL_SUPERIOR,.TP_TITULO_LATERAL_CENTRAL,.TP_TITULO_LATERAL_INFERIOR,.TP_PIE_WEB_div,.TP_PIE_EMAIL_div,.TP_PIE_CONTACTO_div {
+    font-size:9pt;
+  }
+  .TP_TITULO_ARTICULO {
+    font-size:10pt;
+  }
+  /* x-large */
+  .TP_este_numero {
+    font-size:14pt;
+  }
+  /* xx-large */
+  .TP_TITULAR_TEXTO {
+    font-size:16pt;
+  }
+
+/* <BODY> */
+.TP_body {
+  color:#0000C0;
+  background-color:#FFFFFF;
+}
+/* <DIV> que contiene toda la página */
+.TP_body_div {
+  text-align:center;
+}
+/* <TABLE> principal */
+.TP_main_table {
+  color:#00FF00;
+  background-color:transparent;
+  width:600px;
+  border:0;
+}
+/* <TD> de la tabla principal */
+.TP_main_td {
+  color:transparent;
+  background-color:transparent;
+  border:0;
+  text-align:center;
+  vertical-align:top;
+}
+/* <TD> que contiene el logotipo */
+.TP_LOGO_SUPERIOR {
+  color:transparent;
+  background-color:transparent;
+  text-align:center;
+  vertical-align:top;
+}
+/* <TD> con el texto del titular (naranja claro) */
+.TP_TITULAR_TEXTO {
+  color:#F0F0F0;
+  background-color:#909090;
+  text-align:left;
+  vertical-align:middle;
+}
+.TP_TITULAR_otros {
+  color:#F0F0F0;
+  background-color:#909090;
+  text-align:right;
+  vertical-align:middle;
+}
+.TP_TITULAR_COMENTARIO {
+  font-weight:bolder;
+}
+.TP_TITULAR_FECHA {
+}
+.TP_BIENVENIDA_TEXTO {
+  color:#800000;
+  background-color:transparent;
+  padding-top:5px;
+  padding-bottom:5px;
+  text-align:justify;
+}
+.TP_este_numero {
+  color:#800000;
+  background-color:transparent;
+}
+.TP_sumario_td {
+  color:#800000;
+  background-color:transparent;
+  padding-top:3px;
+}
+.TP_sumario_item {
+}
+.TP_TITULO_ARTICULO {
+  color:#800000;
+  background-color:transparent;
+  font-weight:bolder;
+}
+.TP_ARTICULO_cell {
+  color:#800000;
+  background-color:transparent;
+  padding-left:10px;
+}
+.TP_PARRAFO_ARTICULO {
+  padding-bottom:5px;
+}
+.TP_PARRAFO_ARTICULO_link {
+  color:#800000;
+}
+.TP_ENLACE_ARTICULO_div {
+  text-align:right;
+}
+.TP_ENLACE_ARTICULO {
+  color:#800000;
+}
+.TP_IMAGEN_ARTICULO {
+  text-align:right;
+  vertical-align:top;
+}
+.TP_LATERAL_td {
+  color:transparent;
+  background-color:#FAFAFA;
+  vertical-align:top;
+}
+/* Cuadro lateral superior */
+.TP_TITULO_LATERAL_SUPERIOR {
+  color:#800000;
+  background-color:transparent;
+  text-align:center;
+  font-weight:bolder;
+}
+.TP_FOTO_LATERAL_SUPERIOR_cell {
+  text-align:center;
+}
+.TP_LATERAL_SUPERIOR_cont {
+  color:#800000;
+  background-color:transparent;
+  text-align:left;
+}
+.TP_TEXTO_LATERAL_SUPERIOR {
+}
+.TP_TEXTO_LATERAL_SUPERIOR_link {
+  color:#800000;
+  background-color:transparent;
+}
+.TP_ENLACE_LATERAL_SUPERIOR_div {
+}
+.TP_ENLACE_LATERAL_SUPERIOR_raquo {
+  color:#606060;
+  background-color:transparent;
+  font-weight:bolder;
+}
+.ENLACE_LATERAL_SUPERIOR {
+  color:#800000;
+}
+/* Cuadro lateral central */
+.TP_TITULO_LATERAL_CENTRAL {
+  color:#800000;
+  background-color:transparent;
+  text-align:center;
+  font-weight:bolder;
+}
+.TP_FOTO_LATERAL_CENTRAL_cell {
+  text-align:center;
+}
+.TP_LATERAL_CENTRAL_cont {
+  color:#800000;
+  background-color:transparent;
+  text-align:left;
+}
+.TP_TEXTO_LATERAL_CENTRAL {
+}
+.TP_TEXTO_LATERAL_CENTRAL_link {
+  color:#800000;
+  background-color:transparent;
+}
+.TP_ENLACE_LATERAL_CENTRAL_div {
+}
+.TP_ENLACE_LATERAL_CENTRAL_raquo {
+  color:#606060;
+  background-color:transparent;
+  font-weight:bolder;
+}
+.ENLACE_LATERAL_CENTRAL {
+  color:#800000;
+}
+/* Cuadro lateral inferior */
+.TP_TITULO_LATERAL_INFERIOR {
+  color:#800000;
+  background-color:transparent;
+  text-align:center;
+  font-weight:bolder;
+}
+.TP_FOTO_LATERAL_INFERIOR_cell {
+  text-align:center;
+}
+.TP_LATERAL_INFERIOR_cont {
+  color:#800000;
+  background-color:transparent;
+  text-align:left;
+}
+.TP_TEXTO_LATERAL_INFERIOR {
+}
+.TP_TEXTO_LATERAL_INFERIOR_link {
+  color:#800000;
+  background-color:transparent;
+}
+.TP_ENLACE_LATERAL_INFERIOR_div {
+}
+.TP_ENLACE_LATERAL_INFERIOR_raquo {
+  color:#606060;
+  background-color:transparent;
+  font-weight:bolder;
+}
+.ENLACE_LATERAL_INFERIOR {
+  color:#800000;
+}
+.TP_PIE_table {
+  color:#800000;
+  background-color:#FAFAFA;
+  text-align:left;
+}
+.TP_PIE_WEB_div {
+  color:#800000;
+  background-color:transparent;
+}
+.TP_PIE_WEB_link {
+  color:#800000;
+  background-color:transparent;
+}
+.TP_PIE_EMAIL_div {
+  color:#800000;
+  background-color:transparent;
+}
+.TP_PIE_EMAIL_link {
+  color:#800000;
+  background-color:transparent;
+}
+.TP_PIE_CONTACTO_div {
+  color:#800000;
+  background-color:transparent;
+}
+.TP_PIE_CONTACTO_link {
+  color:#800000;
+  background-color:transparent;
+}
+.TP_FOTO_PIE_div {
+  text-align:right;
+}
+.TP_PIE_TEXTO {
+  color:#800000;
+  background-color:transparent;
+}
+/* Color de fondo claro (blanco) */
+.TP_fondo1 {
+  font-size:1px;
+  color:transparent;
+  background-color:#FFFFFF;
+}
+/* Color de fondo intermedio (naranja claro) */
+.TP_fondo2 {
+  font-size:1px;
+  color:transparent;
+  background-color:#909090;
+}
+/* Color de fondo intermedio (naranja oscuro) */
+.TP_fondo3 {
+  font-size:1px;
+  color:transparent;
+  background-color:#606060;
+}
+/* Color de fondo oscuro (azul oscuro) */
+.TP_fondo5 {
+  font-size:1px;
+  color:transparent;
+  background-color:#303030;
+}

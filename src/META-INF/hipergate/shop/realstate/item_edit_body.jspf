@@ -1,0 +1,386 @@
+  <DIV class="cxMnu1" style="width:290px"><DIV class="cxMnu2">
+    <SPAN class="hmMnuOff" onMouseOver="this.className='hmMnuOn'" onMouseOut="this.className='hmMnuOff'" onClick="history.back()"><IMG src="../images/images/toolmenu/historyback.gif" width="16" style="vertical-align:middle" height="16" border="0" alt="[~Atras~]"> [~Atras~]</SPAN>
+    <SPAN class="hmMnuOff" onMouseOver="this.className='hmMnuOn'" onMouseOut="this.className='hmMnuOff'" onClick="location.reload(true)"><IMG src="../images/images/toolmenu/locationreload.gif" width="16" style="vertical-align:middle" height="16" border="0" alt="[~Actualizar~]"> [~Actualizar~]</SPAN>
+    <SPAN class="hmMnuOff" onMouseOver="this.className='hmMnuOn'" onMouseOut="this.className='hmMnuOff'" onClick="window.print()"><IMG src="../images/images/toolmenu/windowprint.gif" width="16" height="16" style="vertical-align:middle" border="0" alt="[~Imprimir~]"> [~Imprimir~]</SPAN>
+  </DIV></DIV>
+  <TABLE WIDTH="100%">
+    <TR><TD><IMG SRC="../images/images/spacer.gif" HEIGHT="4" WIDTH="1" BORDER="0"></TD></TR>
+    <TR><TD CLASS="striptitle"><FONT CLASS="title1">[~Editar Producto~]</FONT></TD></TR>
+  </TABLE>
+
+  <ILAYER id="panelLocator" width="700" height="510"></ILAYER>
+  <NOLAYER>
+  <CENTER>
+    <DIV id="p1" style="background-color: transparent; position: relative; width: 700px; height: 510px">
+    <DIV id="p1panel0" class="panel" style="background-color: #eeeeee;  z-index:4">
+      <FORM ENCTYPE="multipart/form-data" METHOD="post" ACTION="item_edit_store.jsp" onSubmit="return validate()">
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="id_language" VALUE="<%=sLanguage%>">   
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="id_domain" VALUE="<%=id_domain%>">
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="n_domain" VALUE="<%=n_domain%>">
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="id_user" VALUE="<%=id_user%>">      
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="gu_owner" VALUE="<%=id_user%>">      
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="gu_workarea" VALUE="<%=gu_workarea%>">
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="gu_previous_category" VALUE="<%=gu_category%>">        
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="gu_category" VALUE="<%=gu_category%>">
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="gu_product" VALUE="<%=(gu_product==null ? "" : gu_product)%>">        
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="gu_shop" VALUE="<%=gu_shop%>">        
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="nm_shop" VALUE="<%=oShp.getString(DB.nm_shop)%>">        
+  	<INPUT TYPE="hidden" TABINDEX="-1" NAME="lst_attribs">
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="id_status">
+        <INPUT TYPE="hidden" TABINDEX="-1" NAME="id_currency">
+  	
+        <TABLE WIDTH="100%">
+          <TR>
+            <TD ALIGN="right" WIDTH="140"><FONT CLASS="formstrong">[~Categor&iacute;a:~]</FONT></TD>
+            <TD ALIGN="left">
+              <SELECT STYLE="width:320px" NAME="sel_category" CLASS="combomini"><% out.write(oSelCategories.toString()); %></SELECT>
+              &nbsp;&nbsp;<FONT CLASS="formplain">[~Posici&oacute;n:~]</FONT><INPUT TYPE="text" NAME="od_position" MAXLENGTH="5" SIZE="4" CLASS="combomini" VALUE="<% if (od_position!=null) out.write (od_position.toString()); %>" onkeypress="return acceptOnlyNumbers();">
+            </TD>
+          </TR>
+          <TR>
+            <TD ALIGN="right" WIDTH="140"><FONT CLASS="formstrong">[~Nombre:~]</FONT></TD>
+            <TD ALIGN="left"><INPUT TYPE="text" NAME="nm_product" MAXLENGTH="128" SIZE="70" CLASS="combomini" VALUE="<%=oItm.getStringNull(DB.nm_product,"")%>"></TD>
+          </TR>
+          <TR>
+            <TD VALIGN="top" ALIGN="right"><FONT CLASS="formplain">[~Descripci&oacute;n:~]</FONT></TD>
+            <TD>
+	      <TEXTAREA NAME="de_product" ROWS="3" COLS="80" CLASS="combomini"><% out.write(oItm.getStringNull(DB.de_product,"")); %></TEXTAREA>
+            </TD>
+          </TR>
+          <TR>
+            <TD ALIGN="right" WIDTH="140"><FONT CLASS="formplain">[~Referencia:~]</FONT></TD>
+            <TD ALIGN="left">
+              <INPUT TYPE="text" NAME="id_ref" MAXLENGTH="50" SIZE="16" CLASS="combomini" VALUE="<%=oItm.getStringNull(DB.id_ref,"")%>">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <FONT CLASS="formplain">[~Estado:~]</FONT>
+              <SELECT NAME="sel_status" CLASS="combomini"><OPTION VALUE="0">[~No Disponible~]</OPTION><OPTION VALUE="1" SELECTED>[~En stock~]</OPTION><OPTION VALUE="2">[~Bajo Demanda~]</OPTION></SELECT>                           
+            </TD>
+          </TR>
+          <TR>
+            <TD ALIGN="right" WIDTH="140"><FONT CLASS="formplain">[~Precio Est&aacute;ndar:~]</FONT></TD>
+            <TD ALIGN="left">                            
+              <INPUT TYPE="text" NAME="pr_list" MAXLENGTH="12" SIZE="9" CLASS="combomini" VALUE="<% if (!oItm.isNull(DB.pr_list)) out.write(String.valueOf(oItm.getFloat(DB.pr_list))); %>">
+              <SELECT NAME="sel_currency" CLASS="combomini"><OPTION VALUE="999"></OPTION><OPTION VALUE="978" SELECTED>€</OPTION><OPTION VALUE="840">$</OPTION><OPTION VALUE="826">£</OPTION><OPTION VALUE="392">¥</OPTION></SELECT>              
+            </TD>            
+          </TR>
+          <TR>
+            <TD ALIGN="right" WIDTH="140"><FONT CLASS="formplain">[~Precio Oferta:~]</FONT></TD>
+            <TD ALIGN="left">                            
+              <INPUT TYPE="text" NAME="pr_sale" MAXLENGTH="12" SIZE="9" CLASS="combomini" VALUE="<% if (!oItm.isNull(DB.pr_sale)) out.write(String.valueOf(oItm.getFloat(DB.pr_sale))); %>">
+              &nbsp;&nbsp;<FONT CLASS="formplain">[~Inicio Oferta:~]</FONT>
+              <INPUT TYPE="text" NAME="dt_start" MAXLENGTH="10" SIZE="9" CLASS="combomini" VALUE="<% out.write(oItm.isNull(DB.dt_start) ? "" : oItm.getDateFormated(DB.dt_start,"yyyy-MM-dd")); %>">
+              <A HREF="javascript:showCalendar('dt_start')"><IMG SRC="../images/images/datetime16.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="[~Ver Calendario~]"></A>
+	      &nbsp;&nbsp;&nbsp;<FONT CLASS="formplain">[~Fin Oferta:~]</FONT>
+              <INPUT TYPE="text" NAME="dt_end" MAXLENGTH="10" SIZE="9" CLASS="combomini" VALUE="<% out.write(oItm.isNull(DB.dt_end) ? "" : oItm.getDateFormated(DB.dt_end,"yyyy-MM-dd")); %>">
+              <A HREF="javascript:showCalendar('dt_end')"><IMG SRC="../images/images/datetime16.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="[~Ver Calendario~]"></A>	      
+            </TD>            
+          </TR>
+          <TR>
+            <TD ALIGN="right" WIDTH="140"><FONT CLASS="formplain">[~% Tasas:~]</FONT></TD>
+            <TD ALIGN="left">
+              <INPUT TYPE="text" NAME="pct_tax_rate" MAXLENGTH="5" SIZE="4" CLASS="combomini" VALUE="<% if (!oItm.isNull(DB.pct_tax_rate)) out.write(String.valueOf(oItm.getFloat(DB.pct_tax_rate))); %>"> 
+              &nbsp;&nbsp;&nbsp;              
+              <INPUT TYPE="checkbox" NAME="is_tax_included" VALUE="1" <% if (!oItm.isNull(DB.is_tax_included)) out.write(oItm.getShort(DB.is_tax_included)==0 ? "" : " CHECKED"); %>>
+              &nbsp;
+              <FONT CLASS="formplain">[~Tasas Inclu&iacute;das en el precio est&aacute;ndar~]</FONT>
+            </TD>                            
+          </TR>
+          <TR>
+            <TD WIDTH="140" ALIGN="right"><FONT CLASS="formplain">[~Thumbnail:~]</FONT></TD>
+            <TD>
+	      <INPUT TYPE="file" NAME="thumbview" SIZE="15" CLASS="combomini" >
+<%          iImgIndex = oImgs.find(iTpImgColPos, "thumbview");
+	    if (-1!=iImgIndex) { %>
+              <A HREF="<% out.write(sPath+gu_product+"_thumbview."+oImgs.getString(DB.id_img_type,iImgIndex)); %>" TARGET="_blank" TABINDEX="-1"><IMG SRC="../images/images/viewtxt.gif" WIDTH="16" HEIGHT="16" ALT="[~Ver Thumbnail~]" BORDER="0"></A>
+              <A HREF="<% out.write(sPath+gu_product+"_thumbview."+oImgs.getString(DB.id_img_type,iImgIndex)); %>" TARGET="_blank" CLASS="linkplain" TITLE="[~Ver Thumbnail~]">[~Ver~]</A>
+	      <IMG SRC="../images/images/spacer.gif" WIDTH="10" HEIGHT="1" BORDER="0"><IMG SRC="../images/images/delete.gif" WIDTH="13" HEIGHT="13" ALT="[~Eliminar Thumbnail~]"><INPUT TYPE="hidden" NAME="gu_thumbview" VALUE="<% out.write(oImgs.getString(0, iImgIndex)); %>"><INPUT TYPE="checkbox" NAME="del_thumbview" VALUE="1"><FONT CLASS="formplain">[~Eliminar~]</A>
+<%          } else { %>
+              <INPUT TYPE="hidden" NAME="del_thumbview" VALUE="0"><INPUT TYPE="hidden" NAME="gu_thumbview" VALUE=""><IMG SRC="../images/images/spacer.gif" WIDTH="1" HEIGHT="16" BORDER="0">
+<%          } %>
+	      <IMG SRC="../images/images/spacer.gif" WIDTH="10" HEIGHT="1" BORDER="0"><INPUT TYPE="checkbox" NAME="autothumb" VALUE="1"><FONT CLASS="formplain">[~Autom&aacute;tico~]</FONT>&nbsp;<INPUT TYPE="hidden" NAME="dm_thumbsize"><SELECT CLASS="combomini" NAME="sel_thumbsize" onchange="document.forms[0].autothumb.checked=(this.selectedIndex>0);"><OPTION VALUE=""></OPTION><OPTION VALUE="30">30</OPTION><OPTION VALUE="60">60</OPTION><OPTION VALUE="80">80</OPTION><OPTION VALUE="100">100</OPTION><OPTION VALUE="120">120</OPTION><OPTION VALUE="150">150</OPTION><OPTION VALUE="175">175</OPTION><OPTION VALUE="200">200</OPTION><OPTION VALUE="240">240</OPTION></SELECT>&nbsp;<FONT CLASS="formplain">[~pixels~]</FONT>
+            </TD>
+	  </TR>
+          <TR>
+            <TD WIDTH="140" ALIGN="right"><FONT CLASS="formplain">[~Vista Normal:~]</FONT></TD>
+            <TD>
+	      <INPUT TYPE="file" NAME="normalview" SIZE=15" CLASS="combomini">
+<%          iImgIndex = oImgs.find(iTpImgColPos, "normalview");
+	    if (-1!=iImgIndex) { %>
+              <A HREF="<% out.write(sPath+gu_product+"_normalview."+oImgs.getString(DB.id_img_type,iImgIndex)); %>" TARGET="_blank" TABINDEX="-1"><IMG SRC="../images/images/viewtxt.gif" WIDTH="16" HEIGHT="16" ALT="[~Ver Imagen Normal~]" BORDER="0"></A>
+              <A HREF="<% out.write(sPath+gu_product+"_normalview."+oImgs.getString(DB.id_img_type,iImgIndex)); %>" TARGET="_blank" CLASS="linkplain" TITLE="[~Ver Imagen Normal~]">[~Ver~]</A>
+	      <IMG SRC="../images/images/spacer.gif" WIDTH="10" HEIGHT="1" BORDER="0"><IMG SRC="../images/images/delete.gif" WIDTH="13" HEIGHT="13" ALT="[~Eliminar Imagen Normal~]"><INPUT TYPE="hidden" NAME="gu_normalview" VALUE="<% out.write(oImgs.getString(0, iImgIndex)); %>"><INPUT TYPE="checkbox" NAME="del_normalview" VALUE="1"><FONT CLASS="formplain">[~Eliminar~]</A>
+<%          } else { %>
+              <INPUT TYPE="hidden" NAME="del_normalview" VALUE="0"><INPUT TYPE="hidden" NAME="gu_normalview" VALUE="">
+<%          } %>
+            </TD>
+	  </TR>
+          <TR>
+            <TD WIDTH="140" ALIGN="right"><FONT CLASS="formplain">[~Vista Frontal:~]</FONT></TD>
+            <TD>
+	      <INPUT TYPE="file" NAME="frontview" SIZE=15" CLASS="combomini">
+<%          iImgIndex = oImgs.find(iTpImgColPos, "frontview");
+	    if (-1!=iImgIndex) { %>
+              <A HREF="<% out.write(sPath+gu_product+"_frontview."+oImgs.getString(DB.id_img_type,iImgIndex)); %>" TARGET="_blank" TABINDEX="-1"><IMG SRC="../images/images/viewtxt.gif" WIDTH="16" HEIGHT="16" ALT="[~Ver Imagen Frontal~]" BORDER="0"></A>
+              <A HREF="<% out.write(sPath+gu_product+"_frontview."+oImgs.getString(DB.id_img_type,iImgIndex)); %>" TARGET="_blank" CLASS="linkplain" TITLE="[~Ver Imagen Frontal~]">[~Ver~]</A>
+	      <IMG SRC="../images/images/spacer.gif" WIDTH="10" HEIGHT="1" BORDER="0"><IMG SRC="../images/images/delete.gif" WIDTH="13" HEIGHT="13" ALT="[~Eliminar Imagen Frontal~]"><INPUT TYPE="hidden" NAME="gu_frontview" VALUE="<% out.write(oImgs.getString(0, iImgIndex)); %>"><INPUT TYPE="checkbox" NAME="del_frontview" VALUE="1"><FONT CLASS="formplain">[~Eliminar~]</A>
+<%          } else { %>
+              <INPUT TYPE="hidden" NAME="del_frontview" VALUE="0"><INPUT TYPE="hidden" NAME="gu_frontview" VALUE="">
+<%          } %>
+            </TD>
+	  </TR>
+          <TR>
+            <TD WIDTH="140" ALIGN="right"><FONT CLASS="formplain">[~Vista Trasera:~]</FONT></TD>
+            <TD>
+	      <INPUT TYPE="file" NAME="rearview" SIZE=15" CLASS="combomini">
+<%          iImgIndex = oImgs.find(iTpImgColPos, "rearview");
+	    if (-1!=iImgIndex) { %>
+              <A HREF="<% out.write(sPath+gu_product+"_rearview."+oImgs.getString(DB.id_img_type,iImgIndex)); %>" TARGET="_blank" TABINDEX="-1"><IMG SRC="../images/images/viewtxt.gif" WIDTH="16" HEIGHT="16" ALT="[~Ver Imagen Trasera~]" BORDER="0"></A>
+              <A HREF="<% out.write(sPath+gu_product+"_rearview."+oImgs.getString(DB.id_img_type,iImgIndex)); %>" TARGET="_blank" CLASS="linkplain" TITLE="[~Ver Imagen Frontal~]">[~Ver~]</A>
+	      <IMG SRC="../images/images/spacer.gif" WIDTH="10" HEIGHT="1" BORDER="0"><IMG SRC="../images/images/delete.gif" WIDTH="13" HEIGHT="13" ALT="[~Eliminar Imagen Trasera~]"><INPUT TYPE="hidden" NAME="gu_rearview" VALUE="<% out.write(oImgs.getString(0, iImgIndex)); %>"><INPUT TYPE="checkbox" NAME="del_rearview" VALUE="1"><FONT CLASS="formplain">[~Eliminar~]</A>
+<%          } else { %>
+              <INPUT TYPE="hidden" NAME="del_rearview" VALUE="0"><INPUT TYPE="hidden" NAME="gu_rearview" VALUE="">
+<%          } %>
+            </TD>
+	  </TR>
+          <TR>
+          <TD WIDTH="140" ALIGN="right"><FONT CLASS="formplain">[~Archivos Adjuntos:~]</FONT></TD>
+          <TD>
+<%	  iLocIndex = oLocs.find(iPgLocColPos, SIX);
+	  if (-1==iLocIndex) {
+	    sAttachmentId = "";
+	    sAttachmentF1 = "";
+	    sAttachmentRf = "<INPUT TYPE=\"hidden\" NAME=\"del_attachment1\" VALUE=\"0\">";
+	  }
+	  else {
+	    sAttachmentId = oLocs.getString(0, iLocIndex);
+	    sAttachmentF1 = Gadgets.HTMLEncode(oLocs.getStringNull(DB.xoriginalfile, iLocIndex,""));
+	    sAttachmentRf = "<A HREF=\"../servlet/HttpBinaryServlet?id_product=" + oItm.getString(DB.gu_product) + "&id_location=" + sAttachmentId + "&id_user=" + id_user + "\" TARGET=\"_blank\" TITLE=\"[~Descargar Archivo~] " + sAttachmentF1 + "\"><IMG SRC=\"../images/images/viewtxt.gif\" WIDTH=\"16\" HEIGHT=\"16\" BORDER=\"0\" ALT=\"[~Descargar Archivo ~]" + sAttachmentF1 + "\"></A>&nbsp;&nbsp;<IMG SRC=\"../images/images/delete.gif\" WIDTH=\"13\" HEIGHT=\"13\" ALT=\"[~Eliminar Archivo~] " + sAttachmentF1 + "\"><INPUT TYPE=\"checkbox\" NAME=\"del_attachment1\" VALUE=\"1\">&nbsp;";
+          }
+          out.write(sAttachmentRf);
+%>
+            <INPUT TYPE="hidden" NAME="gu_attachment1" VALUE="<% out.write(sAttachmentId); %>"><INPUT TYPE="file" NAME="attachment1" SIZE="15" CLASS="combomini">
+            &nbsp;&nbsp;
+<%	  iLocIndex = oLocs.find(iPgLocColPos, SEVEN);
+	  if (-1==iLocIndex) {
+	    sAttachmentId = "";
+	    sAttachmentF2 = "";
+	    sAttachmentRf = "";
+	  }
+	  else {
+	    sAttachmentId = oLocs.getString(0, iLocIndex);
+	    sAttachmentF2 = Gadgets.HTMLEncode(oLocs.getStringNull(DB.xoriginalfile, iLocIndex,""));
+	    sAttachmentRf = "<A HREF=\"../servlet/HttpBinaryServlet?id_product=" + oItm.getString(DB.gu_product) + "&id_location=" + sAttachmentId + "&id_user=" + id_user + "\" TARGET=\"_blank\" TITLE=\"[~Descargar Archivo~] " + sAttachmentF2 + "\"><IMG SRC=\"../images/images/viewtxt.gif\" WIDTH=\"16\" HEIGHT=\"16\" BORDER=\"0\" ALT=\"[~Descargar Archivo~] " + sAttachmentF2 + "\"></A>&nbsp;&nbsp;<IMG SRC=\"../images/images/delete.gif\" WIDTH=\"13\" HEIGHT=\"13\" ALT=\"[~Eliminar Archivo~] " + sAttachmentF2 + "\"><INPUT TYPE=\"checkbox\" NAME=\"del_attachment2\" VALUE=\"1\">&nbsp;";
+	  }	  
+          out.write(sAttachmentRf);
+%>
+            <INPUT TYPE="hidden" NAME="gu_attachment2" VALUE="<% out.write(sAttachmentId); %>"><INPUT TYPE="file" NAME="attachment2" SIZE="15" CLASS="combomini">
+          </TD>
+          </TR>
+          <TR>
+            <TD COLSPAN="2"><HR></TD>
+          </TR>
+          <TR>
+    	    <TD COLSPAN="2" ALIGN="center">
+<% if (bIsGuest) { %>
+              <INPUT TYPE="button" ACCESSKEY="s" VALUE="[~Guardar~]" CLASS="pushbutton" STYLE="width:80" TITLE="ALT+s" onclick="alert('[~Su nivel de privilegio como Invitado no le permite efectuar esta acción~]')">
+<% } else { %>
+              <INPUT TYPE="submit" ACCESSKEY="s" VALUE="[~Guardar~]" CLASS="pushbutton" STYLE="width:80" TITLE="ALT+s">
+<% } %>
+              &nbsp;&nbsp;&nbsp;<INPUT TYPE="button" ACCESSKEY="c" VALUE="[~Cancelar~]" CLASS="closebutton" STYLE="width:80" TITLE="ALT+c" onclick="window.close()">
+    	    </TD>
+	  </TR>
+        </TABLE>
+<%
+	for (int l=1; l<=5; l++) {
+	  String sl = String.valueOf(l);
+	  out.write ("        <INPUT TYPE=\"hidden\" NAME=\"gu_location" + sl + "\">\n");
+	  out.write ("        <INPUT TYPE=\"hidden\" NAME=\"de_prod_locat" + sl + "\">\n");
+	  out.write ("        <INPUT TYPE=\"hidden\" NAME=\"tag_prod_locat" + sl + "\">\n");
+	  out.write ("        <INPUT TYPE=\"hidden\" NAME=\"nu_min_stock" + sl +"\">\n");
+	  out.write ("        <INPUT TYPE=\"hidden\" NAME=\"nu_current_stock" + sl +"\">\n");
+	}	
+	out.write (sHiddenAttribs);
+%>
+      </FORM>
+    </DIV>
+    <DIV onclick="selectTab(0)" id="p1tab0" class="tab" style="background-color:#eeeeee; left:0px; top:0px; z-index:4; clip:rect(0 auto 30 0)"><SPAN onmouseover="this.style.cursor='hand';" onmouseout="this.style.cursor='auto';">[~Producto~]</SPAN></DIV>
+    <DIV id="p1panel1" class="panel" style="background-color: #dddddd;  z-index:3"> 
+      <FORM>
+        <TABLE WIDTH="100%">
+          <TR>
+            <TD ALIGN="right" WIDTH="140"><FONT CLASS="formstrong">[~Atributo:~]</FONT></TD>
+            <TD ALIGN="left">
+	      <SELECT NAME="sel_attr" STYLE="visibility:hidden" onChange="presetAttrib()">
+                <OPTION VALUE="scope;VARCHAR;100">[~Ambito~]</OPTION>
+                <OPTION VALUE="subject;VARCHAR;100">[~Asunto~]</OPTION>
+                <OPTION VALUE="author;VARCHAR;50">[~Autor~]</OPTION>
+                <OPTION VALUE="color;VARCHAR;50">[~Color~]</OPTION>
+                <OPTION VALUE="size_z;VARCHAR;50">[~Alto~]</OPTION>
+                <OPTION VALUE="size_x;VARCHAR;50">[~Ancho~]</OPTION>
+                <OPTION VALUE="size_y;VARCHAR;50">[~Largo~]</OPTION>
+                <OPTION VALUE="department;VARCHAR;50">[~Departamento~]</OPTION>
+                <OPTION VALUE="days_to_deliver;SMALLINT;2">[~Dias de entrega~]</OPTION>
+                <OPTION VALUE="availability;VARCHAR;50">[~Disponibilidad~]</OPTION>
+                <OPTION VALUE="disk_space;VARCHAR;50">[~Espacio en disco~]</OPTION>
+                <OPTION VALUE="dt_expire;DATE;10">[~Fecha de Caducidad~]</OPTION>
+                <OPTION VALUE="dt_out;DATE;10">[~Fecha de Salida~]</OPTION>
+                <OPTION VALUE="product_group;VARCHAR;32">[~Grupo de Productos~]</OPTION>
+                <OPTION VALUE="isbn;VARCHAR;16">[~ISBN~]</OPTION>
+                <OPTION VALUE="brand;VARCHAR;50">[~Marca~]</OPTION>
+                <OPTION VALUE="doc_no;VARCHAR;50">[~Nº documento~]</OPTION>
+                <OPTION VALUE="organization;VARCHAR;50">[~Organizacion~]</OPTION>
+                <OPTION VALUE="pages;INTEGER;10">[~Paginas~]</OPTION>
+                <OPTION VALUE="country;VARCHAR;50">[~Pais~]</OPTION>
+                <OPTION VALUE="power;VARCHAR;32">[~Potencia~]</OPTION>
+                <OPTION VALUE="rank;FLOAT">[~Ranking~]</OPTION>
+                <OPTION VALUE="reference_id;VARCHAR;100">[~Referencia~]</OPTION>
+                <OPTION VALUE="revised_by;VARCHAR;50">[~Revisado por~]</OPTION>
+                <OPTION VALUE="rooms;SMALLINT;4">[~Habitaciones~]</OPTION>
+                <OPTION VALUE="target;VARCHAR;50">[~Objetivo~]</OPTION>
+                <OPTION VALUE="weight;VARCHAR;16">[~Peso~]</OPTION>
+                <OPTION VALUE="adult_rated;SMALLINT;2">[~Solo Adultos~]</OPTION>
+                <OPTION VALUE="typeof;VARCHAR;50">[~Tipo~]</OPTION>
+                <OPTION VALUE="alturl;VARCHAR;254">[~URL~]</OPTION>
+                <OPTION VALUE="speed;VARCHAR;32">[~Velocidad~]</OPTION>	
+      	      </SELECT>
+      	      <INPUT TYPE="text" NAME="vl_attr" SIZE="37" onFocus="selectTab(1)">
+      	      <INPUT TYPE="button" VALUE="[~Modificar~]" onClick="setAttribs();" onFocus="selectTab(1)">
+	    </TD>
+          </TR>
+          <TR>
+            <TD></TD>
+            <TD ALIGN="left">
+              <SELECT NAME="list_attrs" STYLE="width:500;visibility:hidden" SIZE="17"></SELECT>
+            </TD>
+          </TR>
+          <TR>
+            <TD COLSPAN="2"><HR></TD>
+          </TR>
+          <TR>
+    	    <TD COLSPAN="2" ALIGN="center">
+<% if (bIsGuest) { %>
+              <INPUT TYPE="button" ACCESSKEY="s" VALUE="[~Guardar~]" CLASS="pushbutton" STYLE="width:80" TITLE="ALT+s" onClick="alert('[~Su nivel de privilegio como Invitado no le permite efectuar esta acción~]')">
+<% } else { %>
+              <INPUT TYPE="button" ACCESSKEY="s" VALUE="[~Guardar~]" CLASS="pushbutton" STYLE="width:80" TITLE="ALT+s" onClick="if (validate()) document.forms[0].submit();">
+<% } %>
+              &nbsp;&nbsp;&nbsp;<INPUT TYPE="button" ACCESSKEY="c" VALUE="[~Cancelar~]" CLASS="closebutton" STYLE="width:80" TITLE="ALT+c" onclick="window.close()">
+    	    </TD>
+	  </TR>
+        </TABLE>      	      
+      </FORM> 
+    </DIV>
+    <DIV onclick="selectTab(1)" id="p1tab1" class="tab" style="background-color:#dddddd; left:150px; top:0px; z-index:3; clip:rect(0 auto 30 0)"><SPAN onmouseover="this.style.cursor='hand';" onmouseout="this.style.cursor='auto';">[~Atributos~]</SPAN></DIV>
+    <DIV id="p1panel2" class="panel" style="background-color: #cccccc;  z-index:2">
+
+      <FORM>
+        <TABLE>
+    <% if (sLanguage.equalsIgnoreCase("es")) { %>
+              <TR>
+                <TD ALIGN="right" WIDTH="140">
+                  <A HREF="javascript:lookup(6)"><IMG SRC="../images/images/find16.gif" HEIGHT="16" BORDER="0" ALT="[~Ver Tipos de V&iacute;a~]"></A>&nbsp;
+                  <INPUT TYPE="hidden" NAME="tp_street">
+                  <SELECT CLASS="combomini" STYLE="visibility:hidden" NAME="sel_street"><OPTION VALUE=""></OPTION><%=sStreetLookUp%></SELECT>
+                </TD>
+                <TD ALIGN="left" WIDTH="460">
+                  <INPUT TYPE="text" NAME="nm_street" MAXLENGTH="100" SIZE="36">
+                  &nbsp;&nbsp;
+                  <FONT CLASS="formplain">[~N&uacute;m.~]</FONT>&nbsp;<INPUT TYPE="text" NAME="nu_street" MAXLENGTH="16" SIZE="4">
+                </TD>
+              </TR>
+    <% } else { %>
+              <TR>
+                <TD ALIGN="right" WIDTH="140">
+    	      <FONT CLASS="formplain">[~N&uacute;m.~]</FONT>&nbsp;
+                </TD>
+                <TD ALIGN="left" WIDTH="460">
+                  <INPUT TYPE="text" NAME="nu_street" MAXLENGTH="16" SIZE="4">
+                  <INPUT TYPE="text" NAME="nm_street" MAXLENGTH="100" SIZE="36">
+                  <INPUT TYPE="hidden" NAME="tp_street">
+                  <SELECT CLASS="combomini" STYLE="visibility:hidden" NAME="sel_street"><OPTION VALUE=""></OPTION><%=sStreetLookUp%></SELECT>
+                  <A HREF="javascript:lookup(6)"><IMG SRC="../images/images/find16.gif" HEIGHT="16" BORDER="0" ALT="[~Ver Tipos de V&iacute;a~]"></A>              
+                </TD>
+              </TR>
+    <% } %>
+              <TR>
+                <TD ALIGN="right" WIDTH="140"><FONT CLASS="formplain">[~Esc/Piso:~]</FONT></TD>
+                <TD ALIGN="left" WIDTH="460">
+                  <INPUT TYPE="text" NAME="tx_addr1" MAXLENGTH="100" SIZE="10">
+                  &nbsp;&nbsp;
+                  <FONT CLASS="formplain">[~Resto:~]</FONT>&nbsp;
+                  <INPUT TYPE="text" NAME="tx_addr2" MAXLENGTH="100" SIZE="32">
+                </TD>
+              </TR>
+              <TR>
+                <TD ALIGN="right" WIDTH="140"><FONT CLASS="formplain">[~Pais:~]</FONT></TD>
+                <TD ALIGN="left" WIDTH="460">
+    	      <SELECT CLASS="combomini" STYLE="visibility:hidden" NAME="sel_country" onchange="loadstates()"><OPTION VALUE=""></OPTION><%=sCountriesLookUp%></SELECT>
+                </TD>
+              </TR>
+              <TR>
+                <TD ALIGN="right" WIDTH="140"><FONT CLASS="formplain">[~Provincia/Estado:~]</FONT></TD>
+                <TD ALIGN="left" WIDTH="460">
+                  <A HREF="javascript:lookup(7)"><IMG SRC="../images/images/find16.gif" HEIGHT="16" BORDER="0" ALT="[~Ver provincias~]"></A>&nbsp;<SELECT CLASS="combomini" STYLE="visibility:hidden" NAME="sel_state"></SELECT>
+                  <INPUT TYPE="hidden" NAME="id_state" MAXLENGTH="16">
+                  <INPUT TYPE="hidden" NAME="nm_state" MAXLENGTH="30">
+                </TD>
+              </TR>
+              <TR>
+                <TD ALIGN="right" WIDTH="140"><FONT CLASS="formplain">[~Ciudad:~]</FONT></TD>
+                <TD ALIGN="left" WIDTH="460">
+                  <INPUT TYPE="text" NAME="mn_city" STYLE="text-transform:uppercase" MAXLENGTH="50" SIZE="30">
+                  &nbsp;&nbsp;
+                  <FONT CLASS="formplain">[~C&oacute;d Postal:~]</FONT>
+                  &nbsp;
+                  <INPUT TYPE="text" NAME="zipcode" MAXLENGTH="30" SIZE="5">
+                </TD>
+              </TR>
+	      <TR>
+                <TD COLSPAN="2"><HR></TD>
+              </TR>
+              <TR>
+    	        <TD COLSPAN="2" ALIGN="center">
+    	          
+<% if (bIsGuest) { %>
+                  <INPUT TYPE="button" ACCESSKEY="s" VALUE="[~Guardar~]" CLASS="pushbutton" STYLE="width:80" TITLE="ALT+s" onClick="alert('[~Su nivel de privilegio como Invitado no le permite efectuar esta acción~]')">
+<% } else { %>
+                   <INPUT TYPE="button" ACCESSKEY="s" VALUE="[~Guardar~]" CLASS="pushbutton" STYLE="width:80" TITLE="ALT+s" onClick="if (validate()) document.forms[0].submit();">
+<% } %>
+                    &nbsp;&nbsp;&nbsp;<INPUT TYPE="button" ACCESSKEY="c" VALUE="[~Cancelar~]" CLASS="closebutton" STYLE="width:80" TITLE="ALT+c" onclick="window.close()">
+    	        </TD>
+	      </TR>
+	</TABLE>
+      </FORM>
+
+    </DIV>
+    <DIV onclick="selectTab(2)" id="p1tab2" class="tab" style="background-color:#cccccc; left:300px; top:0px; z-index:2; clip:rect(0 auto 30 0)"><SPAN onmouseover="this.style.cursor='hand';" onmouseout="this.style.cursor='auto';">[~Almac&eacute;n~]</SPAN></DIV>
+    <DIV id="p1panel3" class="panel" style="background-color: #bbbbbb;  z-index:1">
+
+      <FORM>
+      <TABLE WIDTH="100%">
+        <TR><TD>
+          <TABLE ALIGN="center">  
+  	   <% out.write(sUserAttribs); %>
+          </TABLE>
+        </TD></TR>
+        <TR>
+          <TD COLSPAN="2"><HR></TD>
+        </TR>
+        <TR>
+    	  <TD COLSPAN="2" ALIGN="center">
+<% if (bIsGuest) { %>
+            <INPUT TYPE="button" ACCESSKEY="s" VALUE="[~Guardar~]" CLASS="pushbutton" STYLE="width:80" TITLE="ALT+s" onClick="alert('[~Su nivel de privilegio como Invitado no le permite efectuar esta acción~]')">
+<% } else { %>
+            <INPUT TYPE="button" ACCESSKEY="s" VALUE="[~Guardar~]" CLASS="pushbutton" STYLE="width:80" TITLE="ALT+s" onClick="if (validate()) document.forms[0].submit();">
+<% } %>
+            &nbsp;&nbsp;&nbsp;<INPUT TYPE="button" ACCESSKEY="c" VALUE="[~Cancelar~]" CLASS="closebutton" STYLE="width:80" TITLE="ALT+c" onclick="window.close()">
+    	  </TD>
+	</TR>
+      </TABLE>
+      </FORM>
+
+    </DIV>
+    <DIV onclick="selectTab(3)" id="p1tab3" class="tab" style="background-color:#bbbbbb; left:450px; top:0px; z-index:1; clip:rect(0 auto 30 0); width:200px"><SPAN onmouseover="this.style.cursor='hand';" onmouseout="this.style.cursor='auto';">[~Definidos por el Usuario~]</SPAN></DIV>
+    </DIV>
+  </CENTER>
+  </NOLAYER>
+  <LAYER id="p1" width="700" height="510" src="nav4.html"></LAYER>

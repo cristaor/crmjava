@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Name: hipergate
+Specification-Title: hipergate Front End JSP pages
+Specification-Version: 4.0
+Specification-Vendor: Know Gate S.L.
+Implementation-Title: hipergate Front End JSP pages
+Implementation-Version: 4.0
+Implementation-Vendor: Know Gate S.L.

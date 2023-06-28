@@ -1,0 +1,59 @@
+.TP_body_div {
+  text-align:center;
+}
+.TP_fondo1 {
+  font-size:1px;
+  background-color:#800000;
+}
+.TP_fondo2 {
+  font-size:1px;
+  background-color:#303030;
+}
+.TP_TITULAR_TEXTO {
+  color:#FFFFFF;
+  background-color:#800000;
+  font-family:Times New Roman,serif;
+  font-size:18pt;
+  font-weight:bolder;
+  text-align:center;
+}
+.TP_BIENVENIDA_INTRO {
+  color:#800000;
+  font-family:Times New Roman,serif;
+  font-size:12pt;
+  font-weight:bolder;
+}
+.TP_BIENVENIDA_TEXTO {
+  color:#800000;
+  font-family:Times New Roman,serif;
+  font-size:11pt;
+}
+.TP_TITULAR_ARTICULO {
+  color:#800000;
+  font-family:Times New Roman,serif;
+  font-size:12pt;
+  font-weight:bolder;
+}
+.TP_PARRAFO_ARTICULO {
+  color:#800000;
+  padding-top:8px;
+  font-family:Times New Roman,serif;
+  font-size:11pt;
+}
+.TP_ENLACE_ARTICULO_div {
+  text-align:right;
+}
+.TP_ENLACE_ARTICULO {
+  color:#800000;
+  padding-top:5px;
+  font-family:Times New Roman,serif;
+  font-size:10pt;
+}
+.TP_PIE_TEXTO {
+  color:#800000;
+  font-family:Times New Roman,serif;
+  font-size:11pt;
+}
+.TP_FOTO_PIE {
+  text-align:right;
+}

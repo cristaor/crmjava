@@ -1,0 +1,41 @@
+<%
+	
+		  DBSubset oObjTypes = new DBSubset (DB.k_oportunities_lookup, DB.vl_lookup+","+DBBind.Functions.ISNULL+"("+DB.tr_+sLanguage+","+DB.tr_+"en)",
+				                                "("+DB.bo_active+"=1 OR "+DB.bo_active+" IS NULL) AND "+DB.id_section+"='tp_lookup' AND "+DB.gu_owner+"=? ORDER BY 2", 10);
+		  final int nObjTypesCount = oObjTypes.load(oConn, new Object[]{gu_workarea});
+		  
+		  if (nObjTypesCount>0) {
+			  
+			  StringBuffer oObjectiveLookUp = new StringBuffer();
+		    DBSubset oObjects = new DBSubset (DB.k_oportunities_lookup,
+		    DB.vl_lookup+","+DB.tr_+sLanguage+","+DB.tp_lookup,
+		    DB.bo_active+"=1 AND "+DB.id_section+"='id_objetive' AND "+DB.gu_owner+"=? ORDER BY 2",20);
+		    int iObjects = oObjects.load(oConn, new Object[]{gu_workarea});
+
+		    for (int t=0; t<nObjTypesCount; t++) {
+          oObjectiveLookUp.append("<OPTGROUP LABEL=\""+oObjTypes.getStringHtml(1,t,"")+"\">");
+		      for (int o=0; o<iObjects; o++) {
+		        if (oObjects.getStringNull(2,o,"").equals(oObjTypes.getString(0,t)))
+		    		  oObjectiveLookUp.append("<OPTION VALUE=\""+oObjects.getString(0,o)+"\">"+oObjects.getStringHtml(1,o,"")+"</OPTION>");
+		      } // next
+          oObjectiveLookUp.append("</OPTGROUP>");
+		    } // next
+       
+        oObjectiveLookUp.append("<OPTGROUP LABEL=\"Other\">");
+		    for (int o=0; o<iObjects; o++) {
+		    	if (oObjects.isNull(2,o))
+		    		oObjectiveLookUp.append("<OPTION VALUE=\""+oObjects.getString(0,o)+"\">"+oObjects.getStringHtml(1,o,"")+"</OPTION>");
+		    	else if (!oObjTypes.getColumnAsList(0).contains(oObjects.getString(2,o)))
+		    		oObjectiveLookUp.append("<OPTION VALUE=\""+oObjects.getString(0,o)+"\">"+oObjects.getStringHtml(1,o,"")+"</OPTION>");
+		    } // next
+        oObjectiveLookUp.append("</OPTGROUP>");
+
+       
+		    sObjectiveLookUp = oObjectiveLookUp.toString();
+
+		  } else {
+	
+			  sObjectiveLookUp = DBLanguages.getHTMLSelectLookUp (GlobalCacheClient, oConn, DB.k_oportunities_lookup, gu_workarea, DB.id_objetive, sLanguage);	  
+
+		  }
+%>

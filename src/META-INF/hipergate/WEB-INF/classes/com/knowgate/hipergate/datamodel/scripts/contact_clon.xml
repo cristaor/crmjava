@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DATASTRUCT>
+  <ROWSETS>
+    <INIT>
+    </INIT>
+    <ROWSET>
+      <ACTION>
+        <FROM>k_contacts</FROM>
+        <TO>k_contacts</TO>
+        <WHERE>gu_contact=?</WHERE>
+        <FROM_PK>gu_contact</FROM_PK>
+        <TO_PK>gu_contact</TO_PK>
+      </ACTION>
+      <MAPPINGS>
+        <MAPPING TRANSFORM="NEWGUID">gu_contact,gu_contact</MAPPING>
+        <MAPPING>'{#WorkAreaId}',gu_workarea</MAPPING>
+        <MAPPING>'{#OwnerId}',gu_sales_man</MAPPING>
+        <MAPPING>'{#OwnerId}',gu_writer</MAPPING>
+        <MAPPING>0,nu_attachs</MAPPING>
+      </MAPPINGS>
+    </ROWSET>
+    <ROWSET>
+      <ACTION>
+        <FROM>k_contact_notes</FROM>
+        <TO>k_contact_notes</TO>
+        <WHERE>gu_contact=?</WHERE>
+        <FROM_PK>gu_contact,pg_note</FROM_PK>
+        <TO_PK>gu_contact,gu_contact</TO_PK>
+      </ACTION>
+      <MAPPINGS>
+        <MAPPING>'{#WorkAreaId}',gu_workarea</MAPPING>
+        <MAPPING TRANSFORM="REFER(k_contacts.gu_contact)">gu_contact,gu_contact</MAPPING>
+      </MAPPINGS>
+    </ROWSET>
+    <ROWSET>
+      <ACTION>
+        <FROM>k_contacts_attrs</FROM>
+        <TO>k_contacts_attrs</TO>
+        <WHERE>gu_object=?</WHERE>
+        <FROM_PK>gu_object,nm_attr</FROM_PK>
+        <TO_PK>gu_object,nm_attr</TO_PK>
+      </ACTION>
+      <MAPPINGS>
+        <MAPPING TRANSFORM="REFER(k_contacts.gu_contact)">gu_object,gu_object</MAPPING>
+      </MAPPINGS>
+    </ROWSET>
+    <ROWSET>
+      <ACTION>
+        <FROM>k_bank_accounts</FROM>
+        <TO>k_bank_accounts</TO>
+        <WHERE>nu_bank_acc IN (SELECT nu_bank_acc FROM k_x_contact_bank WHERE gu_contact=?)</WHERE>
+        <FROM_PK>nu_bank_acc,gu_workarea</FROM_PK>
+        <TO_PK>nu_bank_acc,gu_workarea</TO_PK>
+      </ACTION>
+      <MAPPINGS>
+        <MAPPING>'{#WorkAreaId}',gu_workarea</MAPPING>
+      </MAPPINGS>
+    </ROWSET>
+    <ROWSET>
+      <ACTION>
+        <FROM>k_x_contact_bank</FROM>
+        <TO>k_x_contact_bank</TO>
+        <WHERE>gu_contact=?</WHERE>
+        <FROM_PK>gu_contact,nu_bank_acc</FROM_PK>
+        <TO_PK>gu_contact,nu_bank_acc</TO_PK>
+      </ACTION>
+      <MAPPINGS>
+        <MAPPING TRANSFORM="REFER(k_contacts.gu_contact)">gu_contact,gu_contact</MAPPING>
+        <MAPPING>'{#WorkAreaId}',gu_workarea</MAPPING>
+      </MAPPINGS>
+    </ROWSET>
+    <ROWSET>
+      <ACTION>
+        <FROM>k_addresses</FROM>
+        <TO>k_addresses</TO>
+        <WHERE>gu_address IN (SELECT gu_address FROM k_x_contact_addr WHERE gu_contact=?)</WHERE>
+        <FROM_PK>gu_address</FROM_PK>
+        <TO_PK>gu_address</TO_PK>
+      </ACTION>
+      <MAPPINGS>
+        <MAPPING>'{#WorkAreaId}',gu_workarea</MAPPING>
+        <MAPPING>'{#OwnerId}',gu_writer</MAPPING>
+      </MAPPINGS>
+    </ROWSET>
+    <ROWSET>
+      <ACTION>
+        <FROM>k_x_contact_addr</FROM>
+        <TO>k_x_contact_addr</TO>
+        <WHERE>gu_contact=?</WHERE>
+        <FROM_PK>gu_contact,gu_address</FROM_PK>
+        <TO_PK>gu_contact,gu_address</TO_PK>
+      </ACTION>
+      <MAPPINGS>
+        <MAPPING TRANSFORM="REFER(k_contacts.gu_contact)">gu_contact,gu_contact</MAPPING>
+      </MAPPINGS>
+    </ROWSET>
+  </ROWSETS>
+</DATASTRUCT>

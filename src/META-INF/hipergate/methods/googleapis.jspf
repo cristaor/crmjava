@@ -1,0 +1,4 @@
+<%
+  final String GMAPSKEY = "ABQIAAAAw_u6e1Qqe8Q0-wkeTcdhOBRDjy0-n4ADYW7y-Y-p2hBI5iBGqxSmJL1pj4g5ATOoop1ewfG_J3b-1w";
+  final String GMAPSURL = "http://www.hipergate.org/";
+%>

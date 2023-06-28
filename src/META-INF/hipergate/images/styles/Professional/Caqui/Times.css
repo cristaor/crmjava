@@ -1,0 +1,40 @@
+.fondo_1 {
+  background-color:#666666;
+  font-size:1px;
+}
+.fondo_2 {
+  background-color:#DDDDDD;
+}
+.fondo_3 {
+  background-color:#008400;
+}
+.fondo_4 {
+  background-color:#FFFFFF;
+}
+.TP_TITULAR_TEXTO {
+  font-family:Garamond,Times New Roman,serif;;
+  font-size:18pt;
+  color:#008400;
+}
+.TP_TITULAR_FECHA {
+  font-family:Garamond,Times New Roman,serif;;
+  font-size:9pt;
+  color:#000000;
+  text-align:right;
+}
+.TP_BIENVENIDA_INTRO,.TP_BIENVENIDA_TEXTO,.TP_ARTICULO_TITULO,.TP_ARTICULO_TEXTO,.TP_ARTICULO_ENLACE,.TP_PIE_TEXTO {
+  font-family:Garamond,Times New Roman,serif;;
+  font-size:11pt;
+  color:#000000;
+}
+.TP_ARTICULO_TITULO {
+  font-weight:bolder;
+}
+.TP_ARTICULO_ENLACE {
+  text-align:right;
+  text-decoration:none;
+  color:#000090;
+}
+.TP_ARTICULO_ENLACE:hover {
+  text-decoration:underline;
+}

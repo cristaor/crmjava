@@ -1,0 +1,193 @@
+.fondomenui { ; background-color: #a9161e}
+.fondomenuii { ; background-color: #666666} 
+.fondomenuiii { ; background-color: #333333}
+.fondoblanco { ; background-color: #FFFFFF} 
+.fondocabecerai { ; background-color: #8b1229} 
+.fondocabeceraii { ; background-color: #d8d8de} 
+.fondocabeceraiii { ; background-color: #a9161e}
+.titularseccion { color:#FFb316; font-family:Verdana; font-size:14px; font-weight:bold; } 
+.textobienvenida { color:#606060; font-family:Verdana; font-size:14px; font-weight:bold; } 
+.fondonegro { ; background-color: #000000} 
+.menu { color:#FFFFFF; font-family:Verdana; font-size:10px; font-weight:bold; ; text-decoration: none} 
+.textobienvenida { color:#606060; font-family:Verdana; font-size:16px; font-weight:bold; } 
+.fondoi { ; background-color: #312e85}
+.fondoii { ; background-color: #F4DDB1}
+.fondoiii { ; background-color: #666666}  
+.entradilla { color:#000000; font-family:Verdana; font-size:12px; font-weight:normal; }
+.textolinks { color:#3300CC; font-family:Verdana; font-size:12px; font-weight:normal; ; text-decoration: underline}
+.raq { color:#8b1229; font-family:Verdana; font-size:11px; font-weight:bold; }
+
+ 
+.combo { font-family: Verdana, Verdana, Helvetica, sans-serif; font-size: 11px; color: #333333; background-color: #FFFFFF}
+.comboii { font-family: Verdana, Verdana, Helvetica, sans-serif; font-size: 11px; color: #000000; background-color: #F2F2F2}
+
+
+.miftitular { ; background-color: #312e85 } 
+.miftitularizq { ; background-color: #312e85  } 
+.miftitularder { ; background-color: #312e85 } 
+.miftitularderii { ; background-color: #312e85 } 
+.mittitular { color:#FFFFFF; font-family:Verdana; font-size:14px; font-weight:bold; } 
+
+.miiftitular { ; background-color: #312e85 } 
+.miiftitularder { ; background-color: #312e85 } 
+.miiftitularderii { ; background-color: #312e85 } 
+.miiftitularizq { ; background-color: #312e85 } 
+.miittitular { color:#FFFFFF; font-family:Verdana; font-size:14px; font-weight:bold; } 
+.miifentradilla { ; background-color: #FFFFFF} 
+.miitentradilla { color:#000000; font-family:Verdana; font-size:12px; font-weight:normal; } 
+.miifpar { ; background-color: #EFEFEF } 
+.miifimpar { ; background-color: #FFFFFF } 
+.miificono { ; background-color: #FFFFFF} 
+.miiftrama { ; background-image: url(../../morado/ge5/mod_fondo_puntos.gif)} 
+.miifborde { ; background-color: #000000} 
+.miitsubcategoria { color:#312e85; font-family:Verdana; font-size:12px; font-weight:bold; ; text-decoration: none} 
+
+.miiiftitular { ; background-color: #FFFFFF } 
+.miiiftitularder { ; background-color: #f7f3c7 } 
+.miiiftitularderii { ; background-color: #f7f3c7 } 
+.miiiftitularizq { ; background-color: #f7f3c7 } 
+.miiittitular { color:#FFFFFF; font-family:Verdana; font-size:14px; font-weight:bold; } 
+.miiiftrama { ; background-image: url(../../morado/ge5/mod_fondo_puntos.gif)} 
+.miiifpar { ; background-color: #ffb316 } 
+.miiifimpar { ; background-color: #bfc0d6 } 
+.miiitentradilla { color:#000000; font-family:Verdana; font-size:12px; font-weight:normal; } 
+.miiificono { ; background-color: #FFFFFF } 
+.miiifentradilla { ; background-color: #FFFFFF } 
+.miiifborde { ; background-color: #000000 } 
+.miiitsubcategoria { color:#eef1ff; font-family:Verdana; font-size:12px; font-weight:bold; ; text-decoration: none} 
+
+.mivftrama { ; background-image: url(../../morado/ge5/mod_fondo_puntos.gif)} 
+.mivftitular { ; background-color: #312e85 } 
+.mivfinformacion { ; background-color: #30608F } 
+.mivfborde { ; background-color: #ffffff } 
+.mivttitular { color:#FFFFFF; font-family:Verdana; font-size:11px; font-weight:bold; ; text-decoration: none} 
+.mivtentradilla { color:#4B4B4B; font-family:Verdana; font-size:12px; font-weight:normal; } 
+.mivfentradilla { ; background-color: #FFFFFF } 
+.mivfnegro { ; background-color: #312e85} 
+
+.mvftrama { ; background-image: url(../../morado/ge5/mod_fondo_puntos.gif)} 
+.mvfborde { ; background-color: #000000 } 
+.mvtentradilla { color:#000000; font-family:Verdana; font-size:12px; font-weight:normal; } 
+.mvftitular { ; background-color: #30608F } 
+.mvftitularder { ; background-color: #30608F } 
+.mvftitularderii { ; background-color: #312e85 } 
+.mvftitularizq { ; background-color: #30608F } 
+.mvfentradilla { ; background-color: #ffffff } 
+.mvttitular { color:#FFFFFF; font-family:Verdana; font-size:14px; font-weight:bold; } 
+
+.mvifborde { ; background-color: #000000 } 
+.mviftitularder { ; background-color: #30608F } 
+.mviftitularderii { ; background-color: #30608F } 
+.mviftitularizq { ; background-color: #30608F } 
+.mviftitular { ; background-color: #30608F }  
+.mviftrama { ; background-image: url(../../morado/ge5/mod_fondo_puntos.gif)} 
+.mvitentradilla { color:#000000; font-family:Verdana; font-size:12px; font-weight:normal; } 
+.mvifentradillaCopia { ; background-color: #FFFFFF } 
+.mvifentradilla { ; background-color: #FFFFFF } 
+.mvitentradillanegrita { color:#000000; font-family:Verdana; font-size:12px; font-weight:bold; } 
+.mvittitular { color:#FFFFFF; font-family:Verdana; font-size:14px; font-weight:bold; } 
+.mvifentradillaii { ; background-color: #FFFFFF } 
+
+.mviifborde { ; background-color: #ffffff } 
+.mviiftitularder { ; background-color: #30608F } 
+.mviiftitularderii { ; background-color: #30608F } 
+.mviiftitularizq { ; background-color: #30608F } 
+.mviiftitular { ; background-color: #30608F } 
+.mviiftrama { ; background-image: url(../../morado/ge5/mod_fondo_puntos.gif) } 
+.mviitentradilla { color:#000000; font-family:Verdana; font-size:12px; font-weight:normal; } 
+.mviifentradillaCopia { ; background-color: #FFFFFF } 
+.mviifentradilla { ; background-color: #FFFFFF } 
+.mviitentradillanegrita { color:#000000; font-family:Verdana; font-size:12px; font-weight:bold; } 
+.mviittitular { color:#FFFFFF; font-family:Verdana; font-size:14px; font-weight:bold; } 
+.mviifentradillaii { ; background-color: #FFFFFF } 
+
+.mviiiftitular { ; background-color: #30608F } 
+.mviiiftitularizq { ; background-color: #30608F } 
+.mviiiftitularder { ; background-color: #30608F } 
+.mviiiftitularderii { ; background-color: #30608F } 
+.mviiittitular { color:#FFFFFF; font-family:Verdana; font-size:14px; font-weight:bold; } 
+.mviiitlinks { color:#3300CC; font-family:Verdana; font-size:12px; font-weight:normal; } 
+.mviiifentradilla { ; background-color: #FFFFFF } 
+
+.mixftitular { ; background-color: #30608F } 
+.mixftitularizq { ; background-color: #30608F } 
+.mixftitularder { ; background-color: #30608F } 
+.mixftitularderii { ; background-color: #30608F } 
+.mixttitular { color:#FFFFFF; font-family:Verdana; font-size:14px; font-weight:bold; } 
+.mixfentradilla { ; background-color: #FFFFFF } 
+.mixtlinks { color:#3300CC; font-family:Verdana; font-size:12px; font-weight:normal; } 
+
+.mxftitular { ; background-color: #30608F } 
+.mxftitularizq { ; background-color: #30608F } 
+.mxftitularder { ; background-color: #30608F } 
+.mxftitularderii { ; background-color: #30608F } 
+.mxttitular { color:#FFFFFF; font-family:Verdana; font-size:14px; font-weight:bold; } 
+.mxfentradilla { ; background-color: #FFFFFF } 
+.mxtlinks { color:#3300CC; font-family:Verdana; font-size:12px; font-weight:normal; } 
+
+.mxxftitular { ; background-color: #eef1ff } 
+.mxxftitularizq { ; background-color: #FFFFFF } 
+.mxxftitularder { ; background-color: #eef1ff } 
+.mxxftitularderii { ; background-color: #eef1ff } 
+.mxxttitular { color:#000000; font-family:Verdana; font-size:13px; font-weight:bold; } 
+
+
+.mxifborde { ; background-color: #000000 } 
+.mxiftrama { ; background-image: url(../../morado/ge5/mod_fondo_puntos.gif)} 
+.mxitentradilla { color:#000000; font-family:Verdana; font-size:12px; font-weight:normal; } 
+.mxifentradilla { ; background-color: #FFFFFF } 
+
+.mxiiifborde { ; background-color: #000000 } 
+.mxiiiftrama { ; background-image: url(../../morado/ge5/mod_fondo_puntos.gif)} 
+.mxiiitentradilla { color:#000000; font-family:Verdana; font-size:12px; font-weight:normal; } 
+.mxiiifentradilla { ; background-color: #ffffff }
+
+ 
+.mxvfborde { ; background-color: #000000 } 
+.mxvftrama { ; background-image: url(../../morado/ge5/mod_fondo_puntos.gif)} 
+.mxvtentradilla { color:#000000; font-family:Verdana; font-size:12px; font-weight:normal; } 
+.mxvfentradilla { ; background-color: #FFFFFF }
+
+ 
+.mxviitentradilla { color:#000000; font-family:Verdana; font-size:12px; font-weight:normal; } 
+.mxviifentradilla { ; background-color: #FFFFFF } 
+
+
+.mxviiifborde { ; background-color: #000000 } 
+.mxviiiftrama { ; background-image: url(../../morado/ge5/mod_fondo_puntos.gif)} 
+
+
+.mxixflinea { ; background-color: #00473D } 
+
+.mxxiftrama { ; background-image: url(../../morado/ge5/mod_fondo_linea.gif)}
+
+.mftrama { ; background-image: url(../../morado/ge5/mod_fondo_puntos.gif) }
+.mxxivftabla { ; background-color: #666666 } 
+.mxxivfizq { ; background-color: #85ADD6 } 
+.mxxivfizqii { ; background-color: #A4A4A4 } 
+.mxxivfizqiii { ; background-color: #f99213 } 
+.mxxivfizqiv { ; background-color: #312e85 } 
+.mxxivttextor { color:#ffffff; font-family:Verdana; font-size:11px; font-weight:bold; }
+
+
+.mxxvftabla { ; background-color: #ffffff } 
+.mxxvfizq { ; background-color: #ffffff } 
+.mxxvfder { ; background-color: #FFFFFF } 
+.mxxvfderii { ; background-color: #FFFFFF } 
+.mxxvttextor { color:#312e85; font-family:Verdana; font-size:12px; font-weight:bold; }
+
+BODY{
+scrollbar-face-color:#9EBEDE;
+scrollbar-arrow-color:#E1F1FF;
+scrollbar-track-color:#F2F9FF;
+scrollbar-shadow-color:#E8EFF7;
+scrollbar-highlight-color:#C7D8EB;
+scrollbar-Base-Color:#923851;
+scrollbar-DarkShadow-Color:#004080;
+scrollbar-3dLight-Color=#3D70A9;
+}
+
+.mxxivttextoant { color:#eef1ff; font-family:Verdana; font-size:11px; ; }
+.mxxivttextoant2 { color:#eef1ff; font-family:Verdana; font-weight: bold; font-size:11px; ; text-decoration: line-through }
+
+.

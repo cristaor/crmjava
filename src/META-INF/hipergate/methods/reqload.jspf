@@ -1,0 +1,217 @@
+<%!
+
+public static String utf8(String sInput) {
+  String sOutput = null;
+  if (null==sInput) return null;
+  try {
+    sOutput = new String(sInput.getBytes("8859_1"),"UTF8");
+  }
+  catch (java.io.UnsupportedEncodingException neverthrown) { }    
+  return sOutput;
+}
+
+final static java.util.regex.Pattern oXssPatt1 = java.util.regex.Pattern.compile("((\\%3C)|<)((\\%2F)|\\/)*[a-z0-9A-Z\\%]+((\\%3E)|>)");
+final static java.util.regex.Pattern oXssPatt2 = java.util.regex.Pattern.compile("((\\%3C)|<)((\\%69)|(i|I)|(\\%49))((\\%6D)|(m|M)|(\\%4D))((\\%67)|(g|G)|(\\%47))[^\\n]+((\\%3E)|>)");
+
+public boolean hasXssSignature(String s) {
+	return oXssPatt1.matcher(s).matches() || oXssPatt2.matcher(s).matches();
+}
+
+public String safeXssGetParameter(HttpServletRequest r, String n) {
+  String s = r.getParameter(n);
+    
+  if (s!=null) {
+    if (hasXssSignature(s)) throw new java.lang.SecurityException("XSS intrusion signature");
+  }
+  return s;  
+}
+
+public String safeXssGetParameter(HttpServletRequest r, String n, String d)
+  {
+  String s = safeXssGetParameter(r,n);
+  return s==null ? d : s;
+}
+
+final static java.util.regex.Pattern oSqlPatt1 = java.util.regex.Pattern.compile("(\\%27)|(\\')|(\\-\\-)|(\\%23)|(#)");
+final static java.util.regex.Pattern oSqlPatt2 = java.util.regex.Pattern.compile("((\\%3D)|(=))[^\\n]*((\\%27)|(\\')|(\\-\\-)|(\\%3B)|(;))");
+final static java.util.regex.Pattern oSqlPatt3 = java.util.regex.Pattern.compile("\\w*((\\%27)|(\\'))((\\%6F)|o|(\\%4F))((\\%72)|r|(\\%52))");
+final static java.util.regex.Pattern oSqlPatt4 = java.util.regex.Pattern.compile("((\\%27)|(\\'))union");
+
+public boolean hasSqlSignature(String s) {
+	return oSqlPatt1.matcher(s).matches() || oSqlPatt2.matcher(s).matches() || oSqlPatt3.matcher(s).matches() || oSqlPatt4.matcher(s).matches();
+}
+
+public String safeSqlGetParameter(HttpServletRequest r, String n)
+  throws java.lang.SecurityException {
+
+  String s = r.getParameter(n);
+
+  if (s!=null) {
+    if (hasSqlSignature(s)) throw new java.lang.SecurityException("SQL injection signature");
+  }
+  return s;
+}
+
+public String safeSqlGetParameter8(HttpServletRequest r, String n)
+  throws java.lang.SecurityException {
+
+  String s = utf8(r.getParameter(n));
+
+  if (s!=null) {
+    if (hasSqlSignature(s)) throw new java.lang.SecurityException("SQL injection signature");
+  }
+  return s;
+}
+
+public String safeSqlGetParameter(HttpServletRequest r, String n, String d) {
+  String s = safeSqlGetParameter(r,n);
+  return s==null ? d : s;
+}
+
+public String safeSqlGetParameter8(HttpServletRequest r, String n, String d) {
+  String s = safeSqlGetParameter8(r,n);
+  return s==null ? d : s;
+}
+
+final static java.util.regex.Pattern oShortDatePatt = java.util.regex.Pattern.compile("[\\d]{4}-[\\d]{2}-[\\d]{2}");
+final static java.util.regex.Pattern oLongDatePatt = java.util.regex.Pattern.compile("[\\d]{4}-[\\d]{2}-[\\d]{2} [\\d]{2}:[\\d]{2}:[\\d]{2}");
+
+public static void loadRequest(com.knowgate.jdc.JDCConnection j, HttpServletRequest r, com.knowgate.dataobjs.DBPersist p)
+  throws java.text.ParseException, java.lang.NullPointerException, java.sql.SQLException,
+         org.apache.oro.text.regex.MalformedPatternException
+  {
+
+	java.util.Iterator i = null;
+  
+  try {
+    i = p.getTable(j).getColumns().iterator();
+  }
+  catch (NullPointerException npe) {
+    throw new NullPointerException("Could not find table " + p.getTableName());
+  }
+  
+  com.knowgate.dataobjs.DBColumn c;
+  String n;
+  String s;
+  String aDt[];
+  java.text.SimpleDateFormat oDateFormat;
+  
+  while (i.hasNext())
+    {
+    c = (com.knowgate.dataobjs.DBColumn) i.next();
+    
+    n = c.getName();
+        
+    s = r.getParameter(n);
+    
+    if (null!=s)
+      {
+      
+      // if (r.getCharacterEncoding()==null) s = utf8(s);
+      
+      s = s.trim();
+      
+      if (s.length()>0)
+        {
+        switch(c.getSqlType())
+          {
+          case java.sql.Types.CHAR:
+          case java.sql.Types.VARCHAR:
+          case java.sql.Types.NCHAR:
+          case java.sql.Types.NVARCHAR:
+              p.replace(n, s);
+            break;
+          case java.sql.Types.INTEGER:
+            try {
+              p.replace(n, new Integer(s));
+            } catch (NumberFormatException nfe) {
+              throw new NumberFormatException("Value for " + n + " is " + s);
+            }
+            break;
+
+          case java.sql.Types.SMALLINT:    	        	               
+            try {
+              p.replace(n, new Short(s));
+            } catch (NumberFormatException nfe) {
+              throw new NumberFormatException("Value for " + n + " is " + s);
+            }
+            break;
+
+          case java.sql.Types.DOUBLE:
+          case java.sql.Types.REAL:
+            try {
+              p.replace(n, new Double(s.replace(',','.')));
+            } catch (NumberFormatException nfe) {
+              throw new NumberFormatException("Value for " + n + " is " + s);
+            }
+            break;        
+
+          case java.sql.Types.FLOAT:
+            try {
+              p.replace(n, new Float(s.replace(',','.')));
+            } catch (NumberFormatException nfe) {
+              throw new NumberFormatException("Value for " + n + " is " + s);
+            }
+            break;
+
+          case java.sql.Types.NUMERIC:
+          case java.sql.Types.DECIMAL:
+            try {
+              p.replace(n, new java.math.BigDecimal(s.replace(',','.')));
+            } catch (NumberFormatException nfe) {
+              throw new NumberFormatException("Value for " + n + " is " + s);
+            }
+            break;
+            
+	        case java.sql.Types.DATE:
+	          if (s.length()>10) s = s.substring(0,10);
+	          if (oShortDatePatt.matcher(s).matches()) {
+	            aDt = com.knowgate.misc.Gadgets.split(s,'-');
+	            p.replace(n, new java.util.Date(Integer.parseInt(aDt[0])-1900,Integer.parseInt(aDt[1])-1,Integer.parseInt(aDt[2])));
+	          } else {
+	            oDateFormat = com.knowgate.workareas.WorkArea.getSimpleDateFormat((java.sql.Connection) j, getCookie(r,"workarea", null));
+              p.replace(n, new java.util.Date(oDateFormat.parse(s).getTime()));
+	          }
+
+	          break;
+	    	    
+    	    case java.sql.Types.TIMESTAMP:
+            if (s.length()==10) {
+	            if (oShortDatePatt.matcher(s).matches()) {
+	              aDt = com.knowgate.misc.Gadgets.split(s,'-');            
+	              p.replace(n, new java.sql.Timestamp(new java.util.Date(Integer.parseInt(aDt[0])-1900,Integer.parseInt(aDt[1])-1,Integer.parseInt(aDt[2])).getTime()));
+              } else {
+	              oDateFormat = new java.text.SimpleDateFormat(com.knowgate.workareas.WorkArea.getDateFormat((java.sql.Connection) j, getCookie(r,"workarea", null))+" HH:mm:ss");
+                p.replace(n, new java.sql.Timestamp(oDateFormat.parse(s).getTime()));              
+              }
+            }
+            else {
+              if (oLongDatePatt.matcher(s).matches()) {
+                oDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                p.replace(n, new java.sql.Timestamp(oDateFormat.parse(s).getTime()));
+              } else {
+	              oDateFormat = new java.text.SimpleDateFormat(com.knowgate.workareas.WorkArea.getDateFormat((java.sql.Connection) j, getCookie(r,"workarea", null))+" HH:mm:ss");
+                p.replace(n, new java.sql.Timestamp(oDateFormat.parse(s).getTime()));
+              }
+            }
+	          break;
+
+    	    case 1111: // PostgreSQL INTERVAL
+	          try { p.put(n, s, 1111); } catch (java.io.FileNotFoundException neverthrown) {}
+	          break;
+   		                
+          default:
+            try {
+              p.put(n, s, c.getSqlType());
+            } catch (java.io.FileNotFoundException ioe) { /* never thrown */ }
+
+          } // end switch
+        } // fi (s!="")
+        else {
+          if (!p.isNull(n)) p.replace(n, null);
+        }
+      } // fi (s!=null)
+    } // wend
+  }
+  
+%>
